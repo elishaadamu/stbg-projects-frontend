@@ -1,0 +1,122 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #e0e0e0; /* Light gray text for dark mode */
+  background-color: #1a1a2e; /* Dark blue-purple background for dark mode */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #8a8aff; /* Lighter blue-purple for links in dark mode */
+  text-decoration: inherit;
+}
+a:hover {
+  color: #6a6aff; /* Slightly darker hover for links */
+}
+
+body {
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #3a3a5e; /* Darker background for default buttons in dark mode */
+  color: #e0e0e0; /* Light text for default buttons */
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
+}
+button:hover {
+  border-color: #8a8aff; /* Accent color border on hover */
+  background-color: #4a4a7e; /* Slightly lighter background on hover */
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Primary button style */
+.primary-button {
+  background-color: #8a8aff; /* Accent color for primary button */
+  color: #ffffff; /* White text for primary button */
+  border-color: #8a8aff;
+}
+.primary-button:hover {
+  background-color: #6a6aff; /* Darker accent on hover */
+  border-color: #6a6aff;
+}
+
+/* Secondary button style */
+.secondary-button {
+  background-color: transparent;
+  color: #8a8aff; /* Accent color text for secondary button */
+  border-color: #8a8aff;
+}
+.secondary-button:hover {
+  background-color: rgba(
+    138,
+    138,
+    255,
+    0.1
+  ); /* Light accent background on hover */
+  color: #6a6aff;
+  border-color: #6a6aff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #333333; /* Dark gray text for light mode */
+    background-color: #f0f2f5; /* Light gray-blue background for light mode */
+  }
+  a {
+    color: #6a6aff; /* Blue-purple for links in light mode */
+  }
+  a:hover {
+    color: #4a4ad0; /* Darker hover for links */
+  }
+  button {
+    background-color: #e0e2e5; /* Light background for default buttons in light mode */
+    color: #333333; /* Dark text for default buttons */
+  }
+  button:hover {
+    border-color: #6a6aff;
+    background-color: #d0d2d5;
+  }
+
+  .primary-button {
+    background-color: #6a6aff;
+    color: #ffffff;
+    border-color: #6a6aff;
+  }
+  .primary-button:hover {
+    background-color: #4a4ad0;
+    border-color: #4a4ad0;
+  }
+
+  .secondary-button {
+    background-color: transparent;
+    color: #6a6aff;
+    border-color: #6a6aff;
+  }
+  .secondary-button:hover {
+    background-color: rgba(106, 106, 255, 0.1);
+    color: #4a4ad0;
+    border-color: #4a4ad0;
+  }
+}
