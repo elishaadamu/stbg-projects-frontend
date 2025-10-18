@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "projects",
+"features": [
+{ "type": "Feature", "properties": { "project_id": 1, "type": "Highway", "syip": "No", "county": "Hopewell, VA", "cmf": 0.25, "AADT": 30601, "length": 0.9, "fc": "PA", "cost_mil": 14.3, "tier": "EIS" }, "geometry": { "type": "Point", "coordinates": [ -77.29355, 37.30849 ] } },
+{ "type": "Feature", "properties": { "project_id": 2, "type": "Intersection", "syip": "Yes", "county": "Hopewell, VA", "cmf": 0.37, "AADT": 15407, "length": 0.4, "fc": "MA", "cost_mil": 5.8, "tier": "EA" }, "geometry": { "type": "Point", "coordinates": [ -77.29, 37.29 ] } },
+{ "type": "Feature", "properties": { "project_id": 3, "type": "Intersection", "syip": "Yes", "county": "Hopewell, VA", "cmf": 0.48, "AADT": 7357, "length": 0.8, "fc": "MC", "cost_mil": 6.7, "tier": "CE" }, "geometry": { "type": "Point", "coordinates": [ -77.289, 37.302 ] } }
+]
+}

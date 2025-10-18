@@ -25,29 +25,60 @@ const STBGFrontend = () => {
 
   const requiredFiles = [
     {
-      key: "projects",
-      name: "Projects GeoJSON",
-      description: "Main project locations with attributes",
-    },
-    {
       key: "crashes",
       name: "Crashes GeoJSON",
       description: "Historical crash data for safety analysis",
     },
     {
+      key: "ej_areas",
+      name: "Environmental Justice Areas",
+      description: "EJ polygon boundaries (lehd_mpo.geojson)",
+    },
+    {
+      key: "hopewell_frsk",
+      name: "Hopewell FRSK",
+      description: "Hopewell flood risk data",
+    },
+    {
+      key: "hopewell_fhz",
+      name: "Hopewell FHZ",
+      description: "Hopewell flood hazard zone data",
+    },
+    {
+      key: "hopewell_wet",
+      name: "Hopewell WET",
+      description: "Hopewell wetlands data",
+    },
+    {
+      key: "hopewell_con",
+      name: "Hopewell CON",
+      description: "Hopewell conservation data",
+    },
+    {
+      key: "actv_mpo",
+      name: "Activity MPO",
+      description: "Activity centers in the MPO",
+    },
+    {
+      key: "t6",
+      name: "T6",
+      description: "T6 GeoJSON data",
+    },
+    {
+      key: "projects",
+      name: "Projects GeoJSON",
+      description: "Main project locations with attributes",
+    },
+    {
       key: "aadt",
       name: "AADT Segments",
-      description: "Annual Average Daily Traffic data",
+      description: "Annual Average Daily Traffic data (stbg_aadt.geojson)",
     },
     {
       key: "pop_emp",
       name: "Population/Employment",
-      description: "TAZ data with population and employment",
-    },
-    {
-      key: "ej_areas",
-      name: "Environmental Justice Areas",
-      description: "EJ polygon boundaries",
+      description:
+        "TAZ data with population and employment (pop_emp_df.geojson)",
     },
     {
       key: "non_work_dest",
@@ -78,17 +109,23 @@ const STBGFrontend = () => {
     setError(null);
     try {
       const fileKeys = {
-        projects: "projects.geojson",
         crashes: "crashes.geojson",
+        ej_areas: "lehd_mpo.geojson", // Assuming this is the new EJ areas file
+        non_work_dest: "nw.geojson",
+        hopewell_frsk: "hopewell_frsk.geojson",
+        hopewell_fhz: "hopewell_fhz.geojson",
+        hopewell_wet: "hopewell_wet.geojson",
+        hopewell_con: "hopewell_con.geojson",
+        actv_mpo: "actv_mpo.geojson",
+        t6: "t6.geojson",
+        projects: "projects.geojson",
         aadt: "stbg_aadt.geojson",
         pop_emp: "pop_emp_df.geojson",
-        ej_areas: "ej_areas.geojson",
-        non_work_dest: "non_work_dest.geojson",
       };
 
       const filePromises = Object.entries(fileKeys).map(
         async ([key, filename]) => {
-          const response = await fetch(`/stbg_projects_test/${filename}`);
+          const response = await fetch(`/stbg_elijah/${filename}`);
           if (!response.ok) {
             throw new Error(`Failed to load ${filename}`);
           }
@@ -151,12 +188,22 @@ const STBGFrontend = () => {
     formData.append("pop_emp_file", files.pop_emp);
     formData.append("ej_areas_file", files.ej_areas);
     formData.append("non_work_dest_file", files.non_work_dest);
+    formData.append("hopewell_frsk_file", files.hopewell_frsk);
+    formData.append("hopewell_fhz_file", files.hopewell_fhz);
+    formData.append("hopewell_wet_file", files.hopewell_wet);
+    formData.append("hopewell_con_file", files.hopewell_con);
+    formData.append("actv_mpo_file", files.actv_mpo);
+    formData.append("t6_file", files.t6);
 
     try {
-      const response = await fetch("https://stbg.onrender.com/analyze", {
+      const response = await fetch("http://127.0.0.1:8000/analyze", {
         method: "POST",
         body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const results = await response.json();
       console.log(results);
